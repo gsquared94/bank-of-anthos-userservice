@@ -17,8 +17,6 @@ kind: Config
 build:
   artifacts:
   - image: userservice
-    jib:
-      project: .
 deploy:
   kubectl:
     manifests:
