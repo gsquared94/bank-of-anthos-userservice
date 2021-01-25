@@ -14,6 +14,8 @@
 
 apiVersion: skaffold/v2beta11
 kind: Config
+metadata:
+  name: userservice
 build:
   artifacts:
   - image: userservice
@@ -21,3 +23,7 @@ deploy:
   kubectl:
     manifests:
     - ./userservice.yaml
+profiles:
+- name: cloudbuild
+  build:
+    googleCloudBuild: {}
