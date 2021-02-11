@@ -12,10 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: skaffold/v2beta11
+apiVersion: skaffold/v2beta12
 kind: Config
 metadata:
   name: userservice
+requires:
+  - git:
+      repo: https://github.com/gsquared94/bank-of-anthos-accounts
 build:
   artifacts:
   - image: userservice
@@ -23,7 +26,3 @@ deploy:
   kubectl:
     manifests:
     - ./userservice.yaml
-profiles:
-- name: cloudbuild
-  build:
-    googleCloudBuild: {}
